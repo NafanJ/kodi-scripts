@@ -19,5 +19,5 @@ This repository contains Bash scripts to help manage TV show files: `nfo_files.s
 `./nfo_files.sh 'Game of Thrones' 1 10 'Winter is Coming'`
 
 ### Permissions
-Note: Ensure that you have the necessary permissions to execute these scripts:
+Ensure that you have the necessary permissions to execute these scripts:
 `chmod +x rename.sh nfo_files.sh`
