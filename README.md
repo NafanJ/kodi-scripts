@@ -5,18 +5,18 @@ This repository contains Bash scripts to help manage TV show files: `nfo_files.s
 ## rename.sh
 
 ### Usage
-./rename.sh 'Show Name' SeasonNo
+`./rename.sh 'Show Name' SeasonNo`
 
 ### Example
-./rename.sh 'Breaking Bad' 2
+`./rename.sh 'Breaking Bad' 2`
 
 ## nfo_files.sh
 
 ### Usage
-./nfo_files.sh 'Show Name' SeasonNo NoEpisodes 'Season Name'
+`./nfo_files.sh 'Show Name' SeasonNo NoEpisodes 'Season Name'`
 
 ### Example
-./nfo_files.sh 'Game of Thrones' 1 10 'Winter is Coming'
+`./nfo_files.sh 'Game of Thrones' 1 10 'Winter is Coming'`
 
 ### Permissions
 Note: Ensure that you have the necessary permissions to execute these scripts:
