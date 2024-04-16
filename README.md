@@ -1,6 +1,6 @@
 # Kodi Scripts
 
-This repository contains Bash scripts to help manage TV show files: `nfo_files.sh` and `rename.sh`. These scripts are designed to simplify the process of organising and renaming files for a TV show.
+This repository contains Bash scripts to help manage TV show files: `nfo_files.sh` and `rename.sh`. These scripts are designed to simplify the process of organising and renaming files for a TV show. I usually pull these down when I reimage my machine.
 
 ## rename.sh
 
