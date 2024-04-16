@@ -1,15 +1,29 @@
 #!/bin/bash
 
-# Check if title, season, and extension parameters are provided
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
-    echo "Error: Please provide a title, season number, and file extension as parameters."
+# Help message function
+show_help() {
+    echo "Usage: $0 title season_number [-h|--help]"
+    echo "  title          : Title of the TV series"
+    echo "  season_number  : Season number"
+    echo "  -h, --help     : Display this help message and exit"
+}
+
+# Check for help option
+if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    show_help
+    exit 0
+fi
+
+# Check if title and season parameters are provided
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Error: Please provide a title and season number as parameters."
+    show_help
     exit 1
 fi
 
-# Set the title, season number, and extension from the parameters
+# Set the title and season number from the parameters
 title="$1"
 season_number="$2"
-file_extension="$3"
 
 # Get the current directory
 directory_path=$(pwd)
@@ -17,16 +31,30 @@ directory_path=$(pwd)
 # Counter for episode numbers
 episode_number=1
 
-# Loop through all files with the specified extension in the directory
-for file in "$directory_path"/*."$file_extension"; do
+# Loop through all files in the directory
+for file in "$directory_path"/*; do
+    # Skip if not a file
+    if [ ! -f "$file" ]; then
+        continue
+    fi
+
     # Extract the file extension
     extension="${file##*.}"
+
+    # Continue if the file has no extension or if it's a hidden file (starts with a dot)
+    if [[ "$extension" == "$file" ]] || [[ "${file##*/}" == .* ]]; then
+        continue
+    fi
 
     # Generate the new filename with the specified format
     new_filename="${title} S${season_number}E$(printf "%02d" $episode_number).$extension"
 
     # Rename the file
-    mv "$file" "$directory_path/$new_filename"
+    if mv "$file" "$directory_path/$new_filename"; then
+        echo "Renamed $file to $new_filename"
+    else
+        echo "Failed to rename $file"
+    fi
 
     # Increment the episode number for the next file
     ((episode_number++))
